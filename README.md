@@ -1,2 +1,2 @@
 # Wazuh-SIEM-Lab
-Hands-on Wazuh SIEM lab covering deployment, agent management, threat detection, log analysis, security monitoring, and system hardening.
+Hands-on Wazuh SIEM lab documenting deployment, monitoring, threat detection, log analysis, File Integrity Monitoring (FIM), Security Configuration Assessment (SCA), and security hardening.
