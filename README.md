@@ -16,3 +16,14 @@ The lab was built in a virtual environment using Oracle VirtualBox to simulate a
 | Wazuh OVA | Amazon Linux 2023 |
 | Monitored Endpoints | Linux & Windows |
 | Main Components | Wazuh Manager, Indexer, Dashboard, Agents |
+
+## Wazuh Architecture
+
+The lab environment consists of four core Wazuh components working together to collect, process, index, and visualize security events. Linux and Windows endpoints send security data to the Wazuh Manager through installed agents, enabling centralized monitoring and alert generation.
+
+| Component | Role |
+-----------------------
+| Wazuh Manager | Collects logs, analyzes events, and generates security alerts. |
+| Wazuh Indexer | Stores and indexes security data for fast searching and analysis. |
+| Wazuh Dashboard | Provides a web interface for monitoring alerts and managing the platform. |
+| Wazuh Agents | Collect endpoint data from Linux and Windows systems and send it to the Wazuh Manager. |
