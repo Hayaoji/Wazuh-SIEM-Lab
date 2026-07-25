@@ -49,4 +49,3 @@ The following screenshot shows the Wazuh Manager service running successfully af
 - Understood the importance of verifying service status before accessing the Wazuh Dashboard.
 - Gained practical experience configuring a virtual machine using Oracle VirtualBox.
 
-The following screenshot shows the Wazuh Manager service running successfully after the installation.
