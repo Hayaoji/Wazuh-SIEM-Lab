@@ -38,9 +38,10 @@ The screenshot below shows the Wazuh Manager service in an active (running) stat
 
 ## Evidence
 
-The following screenshot shows the Wazuh Manager service running successfully after the installation.
-
 ### Service Status Verification
+
+The following screenshot shows the Wazuh Manager service running successfully after the installation.
+![Wazuh Manager Service Status](../images/installation/wazuh-manager-status.png)
 
 ## Lessons Learned
 
