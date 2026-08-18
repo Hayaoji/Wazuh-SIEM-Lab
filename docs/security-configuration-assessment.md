@@ -68,4 +68,10 @@ The initial SCA assessment identified the **Enforce password history** setting a
 
 After updating the password history policy to the recommended value, Wazuh re-evaluated the configuration and reported **Rule ID 26000** as **Passed**.
 
+## Lessons Learned
+
+- Gained practical experience using Wazuh SCA to identify security configuration weaknesses on Linux and Windows systems.
+- Learned how remediation actions affect SCA compliance results.
+- Improved the ability to verify security configuration changes by comparing initial and post-remediation compliance states.
+
 ![Post-Remediation SCA Result - Windows](../images/security-configuration-assessment/windows-sca-post-remediation-passed.png)
