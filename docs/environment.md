@@ -94,6 +94,7 @@ The Wazuh agent configuration file was reviewed at:
 
 ```text
 /var/ossec/etc/ossec.conf
+```
 
 ---
 
