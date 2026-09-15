@@ -106,7 +106,7 @@ Examples included:
 * Analyzing checksum and metadata changes
 * Working with Wazuh Rule ID `550`
 
-[View FIM Documentation](docs/file-integrity-monitoring.md)
+[View FIM Documentation](file-integrity-monitoring.md)
 
 ---
 
@@ -122,7 +122,7 @@ Examples included:
 * Verifying the transition from **Failed** to **Passed**
 * Working with Rule IDs `33000` and `26000`
 
-[View SCA Documentation](docs/security-configuration-assessment.md)
+[View SCA Documentation](security-configuration-assessment.md)
 
 ---
 
@@ -138,7 +138,7 @@ Examples included:
 * Updating the affected software
 * Verifying that the vulnerable version was no longer listed in Wazuh
 
-[View Vulnerability Detection Documentation](docs/vulnerability-detection.md)
+[View Vulnerability Detection Documentation](vulnerability-detection.md)
 
 ---
 
@@ -162,7 +162,7 @@ Windows analysis included:
 * Wazuh Rule ID `60122`
 * Investigation of the affected user account
 
-[View Log Analysis Documentation](docs/log-analysis.md)
+[View Log Analysis Documentation](log-analysis.md)
 
 ---
 
@@ -174,7 +174,7 @@ A local Wazuh rule with ID `100001` was modified in `local_rules.xml` to lower i
 
 The Wazuh Manager was restarted to apply the change, and the resulting alerts were verified with the updated severity level.
 
-[View Rule Tuning Documentation](docs/rule-tuning.md)
+[View Rule Tuning Documentation](rule-tuning.md)
 
 ---
 
@@ -200,7 +200,7 @@ The Wazuh `firewall-drop` Active Response capability was researched to understan
 
 This part of the work focused on understanding the concept and configuration rather than presenting Active Response as a production or fully deployed automated blocking mechanism.
 
-[View Incident Response Documentation](docs/incident-response.md)
+[View Incident Response Documentation](incident-response.md)
 
 ---
 
@@ -238,7 +238,7 @@ The integration included:
 
 A controlled test generated the `TestMyIDS.com Detect` Suricata alert, which was successfully observed in the Wazuh Dashboard.
 
-[View Suricata Integration Documentation](docs/suricata-integration.md)
+[View Suricata Integration Documentation](suricata-integration.md)
 
 ---
 
@@ -259,7 +259,7 @@ These included:
 
 The troubleshooting exercises provided practical experience in diagnosing agent connectivity and maintaining a healthy Wazuh environment.
 
-[View Troubleshooting Documentation](docs/troubleshooting.md)
+[View Troubleshooting Documentation](troubleshooting.md)
 
 ---
 
@@ -274,7 +274,7 @@ Activities included:
 * Reviewing Wazuh release information and update importance
 * Testing Wazuh decoders and rules using `wazuh-logtest`
 
-[View Security Hardening Documentation](docs/security-hardening.md)
+[View Security Hardening Documentation](security-hardening.md)
 
 ---
 
@@ -357,28 +357,28 @@ Detailed implementation notes, configurations, troubleshooting steps, and eviden
 
 ### Environment & Architecture
 
-* [Lab Environment](docs/environment.md)
-* [Lab Architecture](docs/architecture.md)
-* [Wazuh Installation](docs/installation.md)
-* [Agent Deployment](docs/agent-deployment.md)
+* [Lab Environment](environment.md)
+* [Lab Architecture](architecture.md)
+* [Wazuh Installation](installation.md)
+* [Agent Deployment](agent-deployment.md)
 
 ### Security Monitoring
 
-* [File Integrity Monitoring](docs/file-integrity-monitoring.md)
-* [Security Configuration Assessment](docs/security-configuration-assessment.md)
-* [Vulnerability Detection](docs/vulnerability-detection.md)
-* [Log Analysis](docs/log-analysis.md)
-* [Rule Tuning](docs/rule-tuning.md)
+* [File Integrity Monitoring](file-integrity-monitoring.md)
+* [Security Configuration Assessment](security-configuration-assessment.md)
+* [Vulnerability Detection](vulnerability-detection.md)
+* [Log Analysis](log-analysis.md)
+* [Rule Tuning](rule-tuning.md)
 
 ### Incident Response & Network Detection
 
-* [Incident Response](docs/incident-response.md)
-* [Suricata IDS Integration](docs/suricata-integration.md)
+* [Incident Response](incident-response.md)
+* [Suricata IDS Integration](suricata-integration.md)
 
 ### Operations & Maintenance
 
-* [Troubleshooting](docs/troubleshooting.md)
-* [Security Hardening](docs/security-hardening.md)
+* [Troubleshooting](troubleshooting.md)
+* [Security Hardening](security-hardening.md)
 
 ---
 
