@@ -26,7 +26,7 @@ The following tasks were completed:
 
 ## Verification
 
-After completing the installation, the Wazuh services were verified using `systemctl status` to confirm that the platform was running correctly.
+After completing the installation, the Wazuh Manager service was verified using `systemctl status` to confirm that the service was running correctly.
 
 Command used to verify the service status:
 
