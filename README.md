@@ -34,7 +34,7 @@ The lab was designed to simulate core activities performed in a security monitor
 | Virtualization | Oracle VirtualBox |
 | Host | Windows |
 | SIEM | Wazuh 4.12 |
-| Windows Endpoint | Windows VM + Wazuh Agent |
+| Windows Endpoint | Windows 11 host machine + Wazuh |
 | Linux Endpoint | Debian Linux VM + Wazuh Agent |
 | Network IDS | Suricata |
 
