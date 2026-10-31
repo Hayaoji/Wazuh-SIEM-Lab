@@ -12,6 +12,12 @@ Deploy the official Wazuh 4.12 OVA in Oracle VirtualBox and prepare the environm
 | Wazuh OVA 4.12 | Provided the pre-configured Wazuh environment. |
 | Amazon Linux 2023 | Operating system running the Wazuh platform. |
 
+## Deployment Approach
+
+The initial plan was to deploy Wazuh using the all-in-one installation on an Ubuntu 22.04 LTS virtual machine. This attempt could not be completed because of disk space limitations on the host system.
+
+To work within the available resources, the deployment was switched to the official Wazuh 4.12 OVA (Amazon Linux 2023), which provides a pre-configured environment with the Wazuh Manager, Indexer, and Dashboard.
+
 ## Implementation
 
 The installation process followed the official Wazuh deployment approach using the Wazuh 4.12 OVA image.
@@ -48,4 +54,5 @@ The following screenshot shows the Wazuh Manager service running successfully af
 - Learned the deployment workflow using the official Wazuh 4.12 OVA.
 - Understood the importance of verifying service status before accessing the Wazuh Dashboard.
 - Gained practical experience configuring a virtual machine using Oracle VirtualBox.
+- - Learned to plan VM storage before deployment, and that the official OVA is a practical alternative when disk space is limited.
 
