@@ -18,7 +18,7 @@ The lab was designed to simulate core activities performed in a security monitor
 - Assessed endpoint security configurations using SCA
 - Identified and investigated software vulnerabilities
 - Collected and analyzed security logs and authentication events
-- Tuned Wazuh rules to reduce alert severity and noise
+- Customized Wazuh local rules (`local_rules.xml`) to adjust FIM alert severity
 - Performed controlled security incident and authentication-failure exercises
 - Built a security incident monitoring dashboard
 - Integrated Suricata IDS with Wazuh
@@ -125,7 +125,7 @@ Analyzed authentication-related security events from both Linux and Windows endp
 
 **Rule Tuning**
 
-Created and tested a custom Wazuh local rule to adjust alert severity for repeated SSH authentication failures.
+Reviewed the structure of Wazuh local rules and wrote a custom rule to lower the severity of File Integrity Monitoring alerts. The documentation includes the rule configuration and the validation steps planned for it.
 
 [Explore Rule Tuning →](docs/rule-tuning.md)
 
@@ -198,7 +198,7 @@ The project also includes practical work beyond detection:
 
 * Wazuh rules
 * Local rule customization
-* Alert severity tuning
+* Alert severity customization
 * `wazuh-logtest`
 
 **Incident Investigation**
