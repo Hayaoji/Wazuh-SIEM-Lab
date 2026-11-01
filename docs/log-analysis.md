@@ -10,7 +10,7 @@ Collect and analyze security-related log events from Linux and Windows agents an
 | ----------------------- | ------------------------------------------------------------ |
 | Wazuh Dashboard         | Reviewed collected events and generated security alerts.     |
 | Debian Virtual Machine  | Generated and monitored failed sudo authentication attempts. |
-| Windows Virtual Machine | Generated and monitored failed login attempts.               |
+| Windows 11 Host Machine | Generated and monitored failed login attempts.               |
 | Wazuh Log Collector     | Collected and analyzed Linux system log events.              |
 | EventChannel            | Collected Windows security log events.                       |
 
@@ -30,7 +30,7 @@ The resulting alert was classified under the `syslog > sudo` group.
 
 ### Windows – Failed Login Attempt
 
-A new Windows user named `testuser123` was created on the Windows agent. Several login attempts were intentionally performed using incorrect credentials to simulate an unauthorized access attempt.
+A new Windows user named `testuser123` was created on the Windows agent. Several authentication attempts were intentionally performed with incorrect credentials using the `runas` command (error 1326) to simulate an unauthorized access attempt.
 
 Wazuh collected the failed logon events through **EventChannel** and generated security alerts under the `windows_security > authentication_failed` group.
 
