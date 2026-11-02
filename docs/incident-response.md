@@ -22,9 +22,10 @@ The incident response activities were designed to provide practical experience w
 
 ---
 
-## Brute-Force Simulation
+## Brute-Force Scenario: Failed Authentication Simulation
 
-A controlled authentication failure scenario was performed on the Debian Linux environment to simulate suspicious activity.
+A controlled authentication failure scenario was performed on the Debian Linux environment to simulate suspicious activity. 
+The scenario was limited to repeated failed `sudo` authentication attempts on the Debian endpoint; no external SSH brute-force traffic was generated.
 
 The test generated multiple failed `sudo` authentication attempts by the user `hyam`.
 
@@ -59,6 +60,8 @@ The simulated activity involved failed `sudo` authentication attempts where the 
 
 This provided a practical example of how authentication-related events can be detected and investigated using Wazuh.
 
+The alert was generated at rule level 10, which falls within the Medium range (7–11) of the Wazuh Dashboard severity classification.
+
 ---
 
 ## Active Response Concept
@@ -71,7 +74,7 @@ The `firewall-drop` response was studied as an example of a response that can be
 
 The activity focused on understanding how an automated response could be designed to react to suspicious activity.
 
-The Active Response configuration was studied conceptually and was not presented as a production deployment or fully automated blocking implementation.
+The Active Response configuration was studied conceptually and was not deployed as a production or fully automated blocking implementation.
 
 ---
 
@@ -95,6 +98,8 @@ The dashboard included visualizations related to:
 * External SSH attackers
 
 The dashboard provided a centralized view of security-related information and helped make patterns in the collected alerts easier to review.
+
+The dashboard layout was designed to cover both local and network-based authentication events; the Top External SSH Attackers panel had no data in the captured view because no external SSH activity was generated during the lab.
 
 ---
 
@@ -150,6 +155,16 @@ The incident response activities provided practical experience with:
 * Understanding the value of correlating related alerts
 
 These activities were performed within the controlled virtual lab environment.
+
+---
+
+## Evidence
+
+### Security Incident Overview Dashboard
+
+The custom dashboard created to monitor security events during the lab.
+
+[![Security Incident Overview Dashboard](https://github.com/Hayaoji/Wazuh-SIEM-Lab/raw/main/images/incident-response/security-incident-overview.png)](https://github.com/Hayaoji/Wazuh-SIEM-Lab/blob/main/images/incident-response/security-incident-overview.png)
 
 ---
 
