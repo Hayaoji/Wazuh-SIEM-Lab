@@ -1,4 +1,4 @@
-# Suricata IDS/IPS Integration with Wazuh
+# Suricata IDS Integration with Wazuh
 
 ## Objective
 
@@ -7,6 +7,8 @@ Deploy Suricata on the Debian Wazuh Agent, configure network traffic monitoring 
 ## Phase Overview
 
 This phase focused on extending the Wazuh monitoring environment with Suricata, an open-source IDS/IPS capable of inspecting network traffic and generating security events.
+ 
+In this lab, Suricata was run in passive IDS mode: it generated alerts but did not block traffic.
 
 The implementation covered the following areas:
 
@@ -28,7 +30,7 @@ The implementation covered the following areas:
 | Wazuh Manager | Processed events received from the agent. |
 | Wazuh Dashboard | Displayed and analyzed the resulting security alerts. |
 
-## 1. Deploy Suricata IDS/IPS
+## 1. Deploy Suricata
 
 ### Overview
 
@@ -53,6 +55,8 @@ Suricata's EVE JSON output was monitored to confirm that network events were bei
 `/var/log/suricata/eve.json`
 
 The generated events provided the data used later for integration with Wazuh.
+
+Suricata monitored the traffic of the Debian VM's own network interface only; it was not deployed on a network tap or SPAN port.
 
 ## 2. Configure Emerging Threats (ET) Open Ruleset
 
@@ -124,8 +128,11 @@ The resulting alert contained:
 | Item      | Details                |
 | --------- | ---------------------- |
 | Signature | `TestMyIDS.com Detect` |
+| Wazuh Rule ID | `86601` |
 | Level     | `3`                    |
 | Groups    | `IDS, Suricata`        |
+
+The alert was processed by Wazuh's built-in Suricata rule (Rule ID 86601), which maps Suricata alert events to Wazuh alerts.
 
 This confirmed successful end-to-end communication between Suricata and Wazuh.
 
