@@ -167,7 +167,7 @@ The project also includes practical work beyond detection:
 * Wazuh processing health monitoring
 * `analysisd.state` review
 * `events_dropped` and `discarded_count` monitoring
-* `wazuh-logtest` usage
+* `wazuh-logtest` reviewed for rule validation
 * Credential hardening
 * Documented network access restriction recommendations
 
@@ -199,7 +199,7 @@ The project also includes practical work beyond detection:
 * Wazuh rules
 * Local rule customization
 * Alert severity customization
-* `wazuh-logtest`
+* Rule validation concepts (`wazuh-logtest`)
 
 **Incident Investigation**
 
