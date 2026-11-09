@@ -18,7 +18,7 @@ The lab was built using virtual machines hosted on a Windows system with Oracle 
 | Host Operating System | Windows |
 | Wazuh Deployment | Wazuh 4.12 OVA |
 | Linux Endpoint | Debian Linux virtual machine |
-| Windows Endpoint | Windows virtual machine |
+| Windows Endpoint | Windows 11 host machine |
 
 The Wazuh environment was deployed using the Wazuh 4.12 OVA and hosted within Oracle VirtualBox.
 
@@ -52,7 +52,7 @@ The lab included both Windows and Linux endpoints to provide cross-platform moni
 
 ### Windows Agent
 
-A Windows virtual machine was used as a monitored endpoint.
+The Windows 11 host machine running VirtualBox was used as a monitored endpoint.
 
 Activities performed on the Windows agent included:
 
@@ -165,12 +165,11 @@ The environment supported the following documented activities:
 * Security Configuration Assessment (SCA)
 * Vulnerability Detection
 * Log Data Collection and Alert Analysis
-* Basic Wazuh Rule Tuning
+* Wazuh local rule customization
 * Incident alert analysis
 * Basic dashboard customization
 * Agent connectivity troubleshooting
-* Basic security hardening
-* `wazuh-logtest` rule testing
+* Basic credential hardening
 * Suricata IDS integration
 
 These activities were performed using controlled virtual-machine environments.
@@ -179,9 +178,9 @@ These activities were performed using controlled virtual-machine environments.
 
 ## Environment Design
 
-Virtual machines were used to provide an isolated and controlled environment for security testing.
+The Wazuh server and the Debian endpoint ran as virtual machines, providing an isolated and controlled environment for security testing, while the Windows endpoint was the host machine itself.
 
-This setup allowed security events and configuration changes to be generated without directly affecting a production environment.
+All activities were performed in a personal lab environment, without affecting a production environment.
 
 Using both Windows and Debian endpoints also provided practical experience with cross-platform Wazuh monitoring and the differences in agent configuration and system logs between operating systems.
 
@@ -190,7 +189,7 @@ Using both Windows and Debian endpoints also provided practical experience with 
 ## Environment Summary
 
 ```text
-Windows Host
+Windows 11 Host (Wazuh Agent)
 │
 └── Oracle VirtualBox
     │
