@@ -10,7 +10,7 @@ The project was built in a controlled virtual environment using Oracle VirtualBo
 
 This project documents practical work performed while building and operating a Wazuh security monitoring environment.
 
-The lab covers the deployment of Wazuh's core components, endpoint enrollment, security monitoring, detection and analysis of simulated security events, vulnerability identification and remediation, basic rule tuning, incident response exercises, troubleshooting, security hardening, and Suricata IDS integration.
+The lab covers the deployment of Wazuh's core components, endpoint enrollment, security monitoring, detection and analysis of simulated security events, vulnerability identification and remediation, local rule customization, incident response exercises, troubleshooting, basic credential hardening, and Suricata IDS integration. 
 
 The objective was to gain practical experience with how security events are collected, processed, detected, investigated, and visualized in a centralized SIEM environment.
 
@@ -44,24 +44,11 @@ The Wazuh environment consisted of the following core components:
 
 High-level data flow:
 
-```text
-Windows Agent ────────┐
-                      │
-                      ▼
-                Wazuh Manager
-                      │
-                      ▼
-                Wazuh Indexer
-                      │
-                      ▼
-                Wazuh Dashboard
-                      ▲
-                      │
-Debian Linux Agent ───┘
-          ▲
-          │
-       Suricata
-````
+```
+Windows Agent ───────────────────────────┐
+                                         ├──> Wazuh Manager ──> Wazuh Indexer ──> Wazuh Dashboard
+Suricata ──> EVE JSON ──> Debian Agent ──┘
+```
 
 For the Suricata integration:
 
@@ -166,13 +153,11 @@ Windows analysis included:
 
 ---
 
-### Basic Wazuh Rule Tuning
+### Wazuh Local Rule Customization
 
-Performed basic rule customization to reduce alert noise.
+Reviewed how local rules are defined in `local_rules.xml` and added a custom rule (`100500`) to lower the severity of File Integrity Monitoring alerts for checksum changes (rule `550`) to level 3.
 
-A local Wazuh rule with ID `100001` was modified in `local_rules.xml` to lower its alert level to `5` for repeated SSH authentication failures.
-
-The Wazuh Manager was restarted to apply the change, and the resulting alerts were verified with the updated severity level.
+The rule configuration is documented together with the validation steps planned for it; its effect on generated alerts was not validated in the lab.
 
 [View Rule Tuning Documentation](rule-tuning.md)
 
@@ -182,9 +167,9 @@ The Wazuh Manager was restarted to apply the change, and the resulting alerts we
 
 The lab included controlled security event simulations to practice incident detection and investigation.
 
-### Authentication Attack Simulation
+### Authentication Failure Simulation
 
-A controlled brute-force-style scenario was simulated against the Debian Linux environment.
+A controlled failed-authentication scenario was simulated on the Debian Linux endpoint.
 
 Multiple failed `sudo` authentication attempts were generated and detected by Wazuh through Rule ID `5404`.
 
@@ -215,8 +200,7 @@ The dashboard included visualizations covering areas such as:
 * MITRE ATT&CK tactics
 * Top alert categories
 * Users generating events
-* External SSH attackers
-* Recent security activity
+* External SSH attackers (no activity recorded in the lab)
 
 ---
 
@@ -251,11 +235,10 @@ These included:
 * Monitoring CPU, RAM, and disk usage
 * Reviewing Wazuh analysisd health metrics
 * Checking `events_dropped` and `discarded_count`
-* Simulating Wazuh agent disconnections
+* Simulating a Debian agent disconnection
 * Restoring disconnected Windows and Debian agents
 * Investigating firewall and connectivity issues
 * Reviewing Wazuh release information
-* Testing log processing using `wazuh-logtest`
 
 The troubleshooting exercises provided practical experience in diagnosing agent connectivity and maintaining a healthy Wazuh environment.
 
@@ -265,14 +248,13 @@ The troubleshooting exercises provided practical experience in diagnosing agent 
 
 ## Security Hardening
 
-Basic security hardening measures were applied to the Wazuh environment.
+Basic security hardening and recommendations were documented for the Wazuh environment.
 
 Activities included:
 
-* Changing default Wazuh passwords
-* Restricting access to Wazuh ports using UFW and trusted IP addresses
-* Reviewing Wazuh release information and update importance
-* Testing Wazuh decoders and rules using `wazuh-logtest`
+- Changing a default credential
+- Reviewing Wazuh release information and update importance
+- Documenting recommended network access restrictions for Wazuh ports (not implemented in this lab)
 
 [View Security Hardening Documentation](security-hardening.md)
 
@@ -303,15 +285,15 @@ Activities included:
 * Failed login investigation
 * Failed `sudo` authentication analysis
 * Rule and alert analysis
-* Basic alert correlation
+* Alert correlation concepts
 * MITRE ATT&CK context
 
 ### Detection Engineering
 
 * Wazuh local rule customization
-* Alert severity adjustment
-* Alert noise reduction
-* Log and rule testing with `wazuh-logtest`
+* Alert severity customization
+* Rule validation concepts (`wazuh-logtest`)
+
 
 ### Network Security
 
@@ -327,7 +309,7 @@ Activities included:
 * Incident investigation
 * Basic incident response concepts
 * Troubleshooting agent connectivity
-* Security hardening
+* Credential hardening
 * Security monitoring maintenance
 
 ---
@@ -343,10 +325,8 @@ Activities included:
 * Debian Linux
 * Windows
 * Oracle VirtualBox
-* UFW
 * Journald
 * EventChannel
-* `wazuh-logtest`
 * `local_rules.xml`
 
 ---
@@ -406,6 +386,7 @@ Wazuh-SIEM-Lab/
 └── images/
     ├── agent-deployment/
     ├── file-integrity-monitoring/
+    ├── incident-response/
     ├── installation/
     ├── log-analysis/
     ├── rule-tuning/
