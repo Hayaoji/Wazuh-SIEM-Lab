@@ -18,8 +18,7 @@ The troubleshooting activities focused on:
 * Reviewing Wazuh analysis engine health
 * Checking `analysisd.state`
 * Monitoring `events_dropped` and `discarded_count`
-* Simulating Wazuh agent disconnections
-* Restoring Windows and Debian Linux agent connectivity
+* Simulating a Debian agent disconnection and restoring agent connectivity
 * Investigating firewall and network connectivity issues
 * Reviewing Wazuh release information
 * Testing log processing using `wazuh-logtest`
@@ -35,6 +34,14 @@ The following resources were reviewed:
 * CPU usage
 * RAM usage
 * Disk usage
+  
+The following Linux commands were used on the Wazuh server virtual machine, which hosts the Manager, Indexer, and Dashboard:
+
+```bash
+top
+htop
+df -h
+```
 
 Monitoring these resources provided visibility into the overall health of the virtual machines and the Wazuh environment.
 
@@ -45,6 +52,8 @@ Monitoring these resources provided visibility into the overall health of the vi
 Wazuh Manager processing activity was reviewed using the `analysisd.state` file.
 
 The review included monitoring processing-related values such as:
+
+The state file reviewed was `/var/ossec/var/run/wazuh-analysisd.state`.
 
 ```text
 events_dropped
@@ -59,11 +68,9 @@ Monitoring these values provided an additional way to assess the health of Wazuh
 
 ## Agent Connectivity Troubleshooting
 
-Agent connectivity was tested by intentionally stopping Wazuh agents and observing their status in the Wazuh Dashboard.
+Agent connectivity was investigated on both endpoints. On the Debian Linux endpoint, the agent was intentionally stopped to observe how a disconnection appears in Wazuh. On the Windows endpoint, the agent was not appearing in the Wazuh Dashboard and was restored by starting the agent service again.
 
-This was performed with both the Debian Linux and Windows agents.
-
-The purpose was to understand how an agent disconnection appears in Wazuh and to verify that connectivity could be restored after restarting the agent service.
+The purpose was to understand how agent connectivity problems appear in Wazuh and to verify that connectivity could be restored.
 
 ---
 
@@ -95,15 +102,9 @@ After restarting the service, the agent status was checked in the Wazuh Dashboar
 
 ### Windows Agent
 
-The Windows Wazuh agent was also stopped to simulate an endpoint disconnection.
+The Windows endpoint was not appearing in the Wazuh Dashboard.
 
-The Windows service was then started again to restore communication with the Wazuh Manager.
-
-The following PowerShell commands were used:
-
-```powershell
-Stop-Service -Name WazuhSvc
-```
+The agent service was started again using PowerShell:
 
 ```powershell
 Start-Service -Name WazuhSvc
@@ -171,7 +172,7 @@ The tool was used to review:
 
 This was particularly useful when working with Wazuh rules and analyzing security events.
 
-Wazuh documentation describes `wazuh-logtest` as a tool for testing and verifying decoders and rules against supplied log samples. ([Wazuh Documentation][1])
+Wazuh documentation describes `wazuh-logtest` as a tool for testing and verifying decoders and rules against supplied log samples.
 
 ---
 
@@ -230,11 +231,11 @@ The agent status was checked to confirm that communication with the Wazuh Manage
 
 ---
 
-### Example 2: Windows Agent Disconnection
+### Example 2: Windows Agent Not Appearing in the Dashboard
 
 **Problem:**
 
-The Windows Wazuh agent was intentionally stopped to simulate an endpoint disconnection.
+The Windows Wazuh agent was not appearing in the Wazuh Dashboard.
 
 **Investigation:**
 
@@ -246,7 +247,7 @@ The `WazuhSvc` service was started again using PowerShell.
 
 **Verification:**
 
-The Windows agent status was checked to confirm that the endpoint had returned to an active state.
+The Windows agent appeared in the Wazuh Dashboard in an active state.
 
 ---
 
@@ -270,6 +271,66 @@ The processing output was reviewed to confirm the rule and alert information gen
 
 ---
 
+### Example 4: Wazuh Dashboard Not Loading
+
+**Problem:**
+
+The Wazuh Dashboard did not load properly when accessed from outside the Wazuh virtual machine.
+
+**Investigation:**
+
+Firewall settings and network settings were reviewed, and the Dashboard was tested in multiple browsers.
+
+**Resolution:**
+
+The network and firewall configuration was adjusted until the Dashboard became accessible. Resolving this issue took about two days.
+
+**Verification:**
+
+The Wazuh Dashboard loaded and could be used to manage the lab.
+
+---
+
+### Example 5: IP Address Not Retained After Reboot
+
+**Problem:**
+
+The Wazuh virtual machine did not retain its configured IP address after each reboot.
+
+**Investigation:**
+
+The network configuration was checked after restarts, since a changed address prevented the agents from reaching the Wazuh Manager.
+
+**Resolution:**
+
+The IP address was reconfigured manually after each restart as a workaround.
+
+**Verification:**
+
+Agent and Dashboard connectivity were restored after reconfiguring the address.
+
+---
+
+### Example 6: Initial Agent Connectivity Problems
+
+**Problem:**
+
+Agents initially failed to connect to the Wazuh Manager after deployment.
+
+**Investigation:**
+
+Firewall rules and the Manager address configured in `ossec.conf` were reviewed.
+
+**Resolution:**
+
+The Manager address in `ossec.conf` was corrected and the firewall configuration was adjusted.
+
+**Verification:**
+
+The agents appeared as active in the Wazuh Dashboard.
+
+---
+
 ## Key Lessons Learned
 
 The troubleshooting activities demonstrated the importance of following a structured approach when diagnosing security monitoring issues.
@@ -284,6 +345,7 @@ Key lessons included:
 * Use `wazuh-logtest` to validate log decoding and rule matching.
 * Verify the final system state after applying a fix.
 * Use controlled disconnection tests to understand agent connectivity behavior.
+* Treat the Manager's IP address as a dependency for every agent: an address that changes after a reboot breaks agent connectivity.
 
 ---
 
