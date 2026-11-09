@@ -4,7 +4,7 @@
 
 This document describes the troubleshooting activities performed during the Wazuh lab.
 
-The troubleshooting work focused on monitoring the health of the Wazuh environment, investigating agent connectivity issues, checking system and Wazuh processing metrics, resolving network and firewall-related issues, and validating Wazuh log processing.
+The troubleshooting work focused on monitoring the health of the Wazuh environment, investigating agent connectivity issues, checking system and Wazuh processing metrics, resolving network and firewall-related issues, and reviewing tools for validating Wazuh log processing.
 
 All troubleshooting activities were performed within the controlled virtual lab environment.
 
@@ -21,7 +21,7 @@ The troubleshooting activities focused on:
 * Simulating a Debian agent disconnection and restoring agent connectivity
 * Investigating firewall and network connectivity issues
 * Reviewing Wazuh release information
-* Testing log processing using `wazuh-logtest`
+* Reviewing `wazuh-logtest` as a tool for validating log processing
 
 ---
 
@@ -151,17 +151,17 @@ Wazuh 4.12
 
 ---
 
-## Log Processing Troubleshooting
+## Log Processing Validation
 
-The Wazuh `logtest` utility was used to test log processing and investigate how Wazuh decodes logs and applies rules.
+The Wazuh `wazuh-logtest` utility was reviewed as the recommended tool for testing how Wazuh decodes a log entry and which rules it matches.
 
-The following command was used:
+It is run on the Wazuh Manager:
 
 ```bash
 sudo /var/ossec/bin/wazuh-logtest
 ```
 
-The tool was used to review:
+It shows:
 
 * Log pre-decoding
 * Log decoding
@@ -170,7 +170,7 @@ The tool was used to review:
 * Alert level
 * Extracted event information
 
-This was particularly useful when working with Wazuh rules and analyzing security events.
+It was not used for a documented test in this lab. It is relevant to the rule customization work, because it can validate a rule before relying on the alerts it produces.
 
 Wazuh documentation describes `wazuh-logtest` as a tool for testing and verifying decoders and rules against supplied log samples.
 
@@ -178,7 +178,7 @@ Wazuh documentation describes `wazuh-logtest` as a tool for testing and verifyin
 
 ## Troubleshooting Workflow
 
-The troubleshooting process used during the lab can be summarized as:
+The troubleshooting approach can be summarized as:
 
 ```text
 Identify the Problem
@@ -251,27 +251,7 @@ The Windows agent appeared in the Wazuh Dashboard in an active state.
 
 ---
 
-### Example 3: Wazuh Log Processing
-
-**Problem:**
-
-A log entry needed to be tested to understand how Wazuh processed the event.
-
-**Investigation:**
-
-`wazuh-logtest` was used to process the log and review the decoding and rule-matching results.
-
-**Resolution:**
-
-The resulting decoder and rule information was reviewed to understand how Wazuh interpreted the event.
-
-**Verification:**
-
-The processing output was reviewed to confirm the rule and alert information generated from the tested log.
-
----
-
-### Example 4: Wazuh Dashboard Not Loading
+### Example 3: Wazuh Dashboard Not Loading
 
 **Problem:**
 
@@ -291,7 +271,7 @@ The Wazuh Dashboard loaded and could be used to manage the lab.
 
 ---
 
-### Example 5: IP Address Not Retained After Reboot
+### Example 4: IP Address Not Retained After Reboot
 
 **Problem:**
 
@@ -311,7 +291,7 @@ Agent and Dashboard connectivity were restored after reconfiguring the address.
 
 ---
 
-### Example 6: Initial Agent Connectivity Problems
+### Example 5: Initial Agent Connectivity Problems
 
 **Problem:**
 
@@ -342,7 +322,7 @@ Key lessons included:
 * Review firewall configuration when network communication is restricted.
 * Monitor CPU, RAM, and disk usage when investigating system health.
 * Review `analysisd.state` and processing metrics such as `events_dropped` and `discarded_count`.
-* Use `wazuh-logtest` to validate log decoding and rule matching.
+* Validate log decoding and rule matching, for example with `wazuh-logtest`, before relying on custom rules.
 * Verify the final system state after applying a fix.
 * Use controlled disconnection tests to understand agent connectivity behavior.
 * Treat the Manager's IP address as a dependency for every agent: an address that changes after a reboot breaks agent connectivity.
@@ -361,7 +341,7 @@ The activities covered:
 * Firewall-related connectivity
 * System resource monitoring
 * Wazuh analysis engine monitoring
-* Log decoding and rule testing
+* Awareness of `wazuh-logtest` for rule validation
 * Wazuh release awareness
 
 These exercises helped develop a structured approach to troubleshooting security monitoring infrastructure in a controlled lab environment.
