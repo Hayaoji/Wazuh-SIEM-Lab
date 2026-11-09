@@ -27,25 +27,15 @@ The lab consisted of the following main components:
 
 ## High-Level Architecture
 
-```text
-                         Wazuh Platform
-                              │
-                ┌─────────────┼─────────────┐
-                │             │             │
-                ▼             ▼             ▼
-        Wazuh Manager   Wazuh Indexer   Wazuh Dashboard
-                ▲             ▲
-                │             │
-                │             │
-        ┌───────┴───────┐     │
-        │               │     │
-        │               │     │
-        ▼               ▼     │
- Windows Agent    Debian Linux Agent
-                        │
-                        ▼
-                    Suricata
-````
+```
+  Monitored Endpoints                       Wazuh Server (OVA)
+┌───────────────────────┐              ┌───────────────────────┐
+│ Windows Agent         │              │ Wazuh Manager         │
+│                       │ ───────────> │ Wazuh Indexer         │
+│ Debian Agent          │              │ Wazuh Dashboard       │
+│  └─ Suricata          │              │                       │
+└───────────────────────┘              └───────────────────────┘
+```
 
 The Windows and Debian Linux agents collected security-related data and communicated with the Wazuh Manager.
 
@@ -135,23 +125,10 @@ The integration was validated by generating controlled network traffic and confi
 
 The general security monitoring flow was:
 
-```text
-Windows Agent ────────┐
-                      │
-                      ▼
-                Wazuh Manager
-                      │
-                      ▼
-                Wazuh Indexer
-                      │
-                      ▼
-                Wazuh Dashboard
-                      ▲
-                      │
-Debian Agent ─────────┘
-      ▲
-      │
-   Suricata
+```
+Windows Agent ───────────────────────────┐
+                                         ├──> Wazuh Manager ──> Wazuh Indexer ──> Wazuh Dashboard
+Suricata ──> EVE JSON ──> Debian Agent ──┘
 ```
 
 The agents collected endpoint security information, while Suricata provided network security events on the Debian Linux endpoint.
