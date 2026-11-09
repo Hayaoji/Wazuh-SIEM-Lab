@@ -23,7 +23,7 @@ The lab was designed to simulate core activities performed in a security monitor
 - Built a security incident monitoring dashboard
 - Integrated Suricata IDS with Wazuh
 - Troubleshot agent connectivity, network, firewall, and event-processing issues
-- Applied basic security hardening to the monitoring environment
+- Changed default credentials and documented recommended hardening steps for the monitoring environment
 
 ---
 
@@ -168,8 +168,8 @@ The project also includes practical work beyond detection:
 * `analysisd.state` review
 * `events_dropped` and `discarded_count` monitoring
 * `wazuh-logtest` usage
-* Basic Wazuh environment hardening
-* Credential and firewall configuration
+* Credential hardening
+* Documented network access restriction recommendations
 
 [Explore Troubleshooting →](docs/troubleshooting.md)
 
@@ -219,8 +219,8 @@ The project also includes practical work beyond detection:
 
 * Troubleshooting
 * Agent connectivity
-* Firewall configuration
-* Basic security hardening
+* Network and firewall troubleshooting
+* Credential hardening
 
 ---
 
