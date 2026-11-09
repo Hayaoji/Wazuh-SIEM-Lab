@@ -74,7 +74,6 @@ The Debian Linux endpoint was used for:
 * Linux security log collection
 * Failed sudo authentication testing
 * Alert analysis
-* Wazuh rule tuning
 * Suricata integration
 
 ---
@@ -147,7 +146,7 @@ The architecture supported the following practical security monitoring activitie
 * Vulnerability Detection
 * Security log collection
 * Alert analysis
-* Basic Wazuh rule tuning
+* Wazuh local rule customization
 * Network intrusion detection through Suricata
 * Dashboard-based security monitoring
 
@@ -185,4 +184,4 @@ Windows Host
         └── Suricata
 ```
 
-This architecture provided a controlled environment for practicing centralized security monitoring, endpoint detection, vulnerability monitoring, log analysis, rule tuning, and network intrusion detection.
+This architecture provided a controlled environment for practicing centralized security monitoring, endpoint detection, vulnerability monitoring, log analysis, rule customization, and network intrusion detection.
