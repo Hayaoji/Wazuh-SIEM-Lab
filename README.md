@@ -4,11 +4,11 @@
 
 This repository documents the practical work performed while building and operating a **Wazuh-based security monitoring environment** in a controlled virtual lab.
 
-The project combines **Windows and Debian Linux endpoint monitoring** with security detection, investigation, remediation, rule tuning, and **Suricata IDS integration**.
+The project combines **Windows and Debian Linux endpoint monitoring** with security detection, investigation, remediation, rule customization, and **Suricata IDS integration**.
 
 ---
 
-##  What I Built
+## What I Built
 
 The lab was designed to simulate core activities performed in a security monitoring environment:
 
@@ -33,38 +33,22 @@ The lab was designed to simulate core activities performed in a security monitor
 |---|---|
 | Virtualization | Oracle VirtualBox |
 | Host | Windows |
-| SIEM | Wazuh 4.12 |
-| Windows Endpoint | Windows 11 host machine + Wazuh |
+| SIEM | Wazuh 4.12 (OVA) |
+| Windows Endpoint | Windows 11 host machine + Wazuh Agent |
 | Linux Endpoint | Debian Linux VM + Wazuh Agent |
 | Network IDS | Suricata |
 
 ### High-Level Architecture
 
 ```text
- Windows Endpoint
-       │
-       │ Wazuh Agent
-       ▼
- ┌─────────────────┐
- │  Wazuh Manager  │
- └────────┬────────┘
-          │
-          ▼
- ┌─────────────────┐
- │  Wazuh Indexer  │
- └────────┬────────┘
-          │
-          ▼
- ┌─────────────────┐
- │ Wazuh Dashboard │
- └─────────────────┘
-          ▲
-          │
-    Debian Endpoint
-          ▲
-          │
-       Suricata
-````
+  Monitored Endpoints                       Wazuh Server (OVA)
+┌───────────────────────┐              ┌───────────────────────┐
+│ Windows Agent         │              │ Wazuh Manager         │
+│                       │ ───────────> │ Wazuh Indexer         │
+│ Debian Agent          │              │ Wazuh Dashboard       │
+│  └─ Suricata          │              │                       │
+└───────────────────────┘              └───────────────────────┘
+```
 
 For the network detection component:
 
@@ -272,6 +256,7 @@ Wazuh-SIEM-Lab/
 └── images/
     ├── agent-deployment/
     ├── file-integrity-monitoring/
+    ├── incident-response/
     ├── installation/
     ├── log-analysis/
     ├── rule-tuning/
