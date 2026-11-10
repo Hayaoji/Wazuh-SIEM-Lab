@@ -9,7 +9,7 @@ Deploy Wazuh agents on Windows and Linux systems, verify successful enrollment, 
 | Software | Purpose |
 |----------|---------|
 | Wazuh Dashboard | Generated agent enrollment commands and monitored agent status. |
-| Windows Virtual Machine | Hosted the Windows Wazuh agent. |
+| Windows 11 Host Machine | Hosted the Windows Wazuh agent. |
 | Debian Virtual Machine | Hosted the Linux Wazuh agent. |
 | Wazuh Agent | Collected system events and forwarded them to the Wazuh Manager. |
 
@@ -20,7 +20,7 @@ The agent deployment process included enrolling both Windows and Linux systems i
 The following tasks were completed:
 
 - Generated the Windows agent enrollment command from the Wazuh Dashboard.
-- Installed and registered the Wazuh agent on a Windows virtual machine.
+- Installed and registered the Wazuh agent on the Windows 11 host machine.
 - Generated the Linux agent enrollment command.
 - Installed and registered the Wazuh agent on a Debian virtual machine.
 - Verified that both agents successfully connected to the Wazuh Manager.
@@ -35,6 +35,7 @@ The following checks were performed:
 - Verified that both Windows and Linux agents appeared as **Active** in the Wazuh Dashboard.
 - Confirmed that the enrolled agents were successfully communicating with the Wazuh Manager.
 - Generated basic system activity on both operating systems and verified that security events were received in the Wazuh Dashboard.
+- Initial connectivity problems with the agents (firewall rules and the Manager address) are documented in the Troubleshooting document (Example 5).
 
 ## Evidence
 
