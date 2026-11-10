@@ -10,8 +10,8 @@ Validate Wazuh's File Integrity Monitoring capability by modifying critical syst
 |----------|---------|
 | Wazuh Dashboard | Monitored File Integrity Monitoring alerts. |
 | Debian Virtual Machine | Simulated file modifications on Linux. |
-| Windows Virtual Machine | Simulated file modifications on Windows. |
-| Wazuh Syscheck Module | Detected file integrity changes in real time. |
+| Windows 11 Host Machine | Simulated file modifications on Windows.      |
+| Wazuh Syscheck Module   | Detected file integrity changes.              |
 
 ## Implementation
 
@@ -36,6 +36,22 @@ The following checks were performed:
 - Verified that both alerts were detected by the **Syscheck** module.
 - Verified that both events generated **Rule ID 550 (Integrity checksum changed)**.
 - Confirmed that file modifications were detected during integrity monitoring and displayed in the Wazuh Dashboard.
+
+## Commands Used
+
+Add a test entry to `/etc/passwd` on Debian:
+
+```
+echo "malicious_user2:x:1003::/home/malicious:/bin/bash" | sudo tee -a /etc/passwd
+```
+
+On Windows, a commented test line was added to the `hosts` file:
+
+```
+# 127.0.0.1 malicious-entry.local
+```
+
+The Windows entry was commented out, so it did not change name resolution on the host machine.
 
 ## Evidence
 
