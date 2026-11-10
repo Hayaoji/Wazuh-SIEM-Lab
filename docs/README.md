@@ -23,11 +23,11 @@ The objective was to gain practical experience with how security events are coll
 | Virtualization Platform | Oracle VirtualBox |
 | Host Operating System | Windows |
 | Wazuh Deployment | Wazuh 4.12 OVA |
-| Monitored Windows Endpoint | Windows virtual machine |
+| Monitored Windows Endpoint | Windows 11 host machine |
 | Monitored Linux Endpoint | Debian Linux virtual machine |
 | Network IDS | Suricata on Debian Linux |
 
-The lab used separate virtual machines for the Wazuh environment and monitored endpoints.
+The Wazuh server and the Debian endpoint ran as separate virtual machines, while the Windows endpoint was the host machine.
 
 Debian Linux was used as the primary Linux endpoint for the hands-on security monitoring activities.
 
