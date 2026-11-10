@@ -47,7 +47,7 @@ The Wazuh Manager processed the collected data and generated alerts. Security ev
 
 ### Windows Endpoint
 
-The Windows virtual machine was enrolled as a Wazuh agent.
+The Windows 11 host machine was enrolled as a Wazuh agent.
 
 The Windows endpoint was used for:
 
@@ -167,7 +167,7 @@ Adding Suricata to the Debian Linux endpoint extended the monitoring capability 
 ## Architecture Summary
 
 ```text
-Windows Host
+Windows 11 Host (Wazuh Agent)
 │
 └── Oracle VirtualBox
     │
