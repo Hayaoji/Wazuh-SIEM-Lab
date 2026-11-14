@@ -107,7 +107,7 @@ Examples included:
 * Windows `Enforce password history` policy
 * Remediating the identified configurations
 * Verifying the transition from **Failed** to **Passed**
-* Working with Rule IDs `33000` and `26000`
+* Working with SCA Check IDs `33000` and `26000`
 
 [View SCA Documentation](security-configuration-assessment.md)
 
