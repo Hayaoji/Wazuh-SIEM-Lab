@@ -54,5 +54,5 @@ The following screenshot shows the Wazuh Manager service running successfully af
 - Learned the deployment workflow using the official Wazuh 4.12 OVA.
 - Understood the importance of verifying service status before accessing the Wazuh Dashboard.
 - Gained practical experience configuring a virtual machine using Oracle VirtualBox.
-- - Learned to plan VM storage before deployment, and that the official OVA is a practical alternative when disk space is limited.
+- Learned to plan VM storage before deployment, and that the official OVA is a practical alternative when disk space is limited.
 
