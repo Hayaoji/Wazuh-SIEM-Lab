@@ -180,7 +180,7 @@ These activities were performed using controlled virtual-machine environments.
 
 The Wazuh server and the Debian endpoint ran as virtual machines, providing an isolated and controlled environment for security testing, while the Windows endpoint was the host machine itself.
 
-All activities were performed in a personal lab environment, without affecting a production environment.
+All activities were performed in a controlled lab environment, without affecting a production environment.
 
 Using both Windows and Debian endpoints also provided practical experience with cross-platform Wazuh monitoring and the differences in agent configuration and system logs between operating systems.
 
