@@ -198,9 +198,6 @@ Windows 11 Host (Wazuh Agent)
     │   ├── Wazuh Indexer
     │   └── Wazuh Dashboard
     │
-    ├── Windows VM
-    │   └── Wazuh Agent
-    │
     └── Debian VM
         ├── Wazuh Agent
         └── Suricata
