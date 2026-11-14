@@ -51,9 +51,9 @@ Monitoring these resources provided visibility into the overall health of the vi
 
 Wazuh Manager processing activity was reviewed using the `analysisd.state` file.
 
-The review included monitoring processing-related values such as:
-
 The state file reviewed was `/var/ossec/var/run/wazuh-analysisd.state`.
+
+The review included monitoring processing-related values such as:
 
 ```text
 events_dropped
