@@ -87,7 +87,6 @@ Activities performed on the Debian Linux agent included:
 - Vulnerability Detection
 - Failed sudo authentication testing
 - Alert analysis
-- Basic Wazuh rule tuning
 - Suricata deployment and integration
 
 The Wazuh agent configuration file was reviewed at:
@@ -172,7 +171,7 @@ The environment supported the following documented activities:
 * Basic credential hardening
 * Suricata IDS integration
 
-These activities were performed using controlled virtual-machine environments.
+These activities were performed in the controlled lab environment.
 
 ---
 
